@@ -11,9 +11,7 @@ import { ProductsService } from '../../product_service/products.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  public productsList: any;
-  public itemNumber = 0;
-  public users: any;
+  public productsList: Product[] = [];
 
   constructor(private productsApi: ProductsService) {}
 
