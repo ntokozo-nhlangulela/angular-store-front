@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../product_service/products.service';
 
@@ -12,8 +13,12 @@ import { ProductsService } from '../../product_service/products.service';
 })
 export class ProductsComponent implements OnInit {
   public productsList: Product[] = [];
+  public itemNumber = 0;
 
-  constructor(private productsApi: ProductsService) {}
+  constructor(
+    private productsApi: ProductsService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.productsApi.getAllProducts().subscribe((res) => {
@@ -22,6 +27,14 @@ export class ProductsComponent implements OnInit {
       this.productsList.map((a: Product) => {
         Object.assign(a, { quantity: 1, total: a.price });
       });
+
+      this.cartService.getProducts().subscribe((res) => {
+        this.itemNumber = res.length;
+        console.log(this.itemNumber);
+      });
     });
+  }
+  addToCart(item: Product) {
+    this.cartService.addToCart(item);
   }
 }
