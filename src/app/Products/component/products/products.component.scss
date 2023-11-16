@@ -1,7 +1,7 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 30%;
+    width: 20%;
     padding: 10px;
     margin: 10px;
   }
@@ -37,6 +37,11 @@
     height: 100px;
   }
 
+  .button{
+    width: 100%;
+    height: 30px;
+  }
+
   .footer{
     background-color: black;
     width: 100vw;
@@ -46,7 +51,7 @@
 
   @media (max-width: 1000px) {
     .card{
-      flex: 100%;
+      flex: 30%;
     }
     .img{
       flex: 100%
