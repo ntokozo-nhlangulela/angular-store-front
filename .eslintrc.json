@@ -46,7 +46,9 @@
         "comma-dangle": 0,
         "import/prefer-default-export": 0,
         "import/extensions": 0,
-        "prettier/prettier": ["error"],
+        "prettier/prettier": [
+          "error"
+        ],
         "@typescript-eslint/no-implicit-any-catch": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "camelcase": "warn",
@@ -54,12 +56,19 @@
         "no-empty-function": 0,
         "no-useless-constructor": 0,
         "lines-between-class-members": 0,
-       // "import/no-extraneous-dependencies": "warn",
         "no-plusplus": 0,
         "class-methods-use-this": "warn",
         "no-restricted-syntax": "warn",
         "max-classes-per-file": "warn"
       }
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }
