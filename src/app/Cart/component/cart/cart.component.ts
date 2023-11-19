@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProductsComponent } from 'src/app/Products/component/products/products.component';
+import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
+import {
+  emptyCart,
+  removeCartItem
+} from 'src/app/Store/Cart_Store/actions/cart_actions';
 import { CartService } from '../../cart_service/cart.service';
 
 @Component({
@@ -12,34 +18,54 @@ import { CartService } from '../../cart_service/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
-  public products$: any = [];
-  public finalPrice!: string;
+export class CartComponent implements OnInit, AfterViewInit {
+  public products$: Product[] = [];
+  public finalPrice!: number;
   public itemNumber = 0;
+  public id!: number;
 
   constructor(
     private productsApi: ProductsService,
     private cartService: CartService,
-    private store: Store<{ carts: { cartItems: any[] } }>
+    private store: Store<{ carts: { cartItems: Product[] } }>,
+    private route: Router
   ) {
-    store.select('carts').subscribe((cartState: { cartItems: any[] }) => {
+    store.select('carts').subscribe((cartState: { cartItems: Product[] }) => {
       this.products$ = cartState.cartItems;
       console.log('state: ', this.products$);
     });
   }
 
   ngOnInit(): void {
+    console.log('Hwye');
     this.cartService.getProducts().subscribe((res) => {
       this.itemNumber = res.length;
       console.log(this.itemNumber);
     });
+    //this.getTotal();
   }
 
-  removeItem(item: any) {
-    this.cartService.removeCartItem(item);
+  ngAfterViewInit(): void {
+    console.log(this.products$);
   }
 
   emptyCart() {
-    this.cartService.removeAllCart();
+    this.products$ = [];
+    this.store.dispatch(emptyCart({ cartItems: this.products$ }));
+  }
+
+  removeCartItem(id: number): void {
+    const x = this.products$.find((x) => x.id === id);
+    console.log('Checking X ', x);
+    this.products$.forEach((element, index) => {
+      if (element.id === x?.id) {
+        this.products$.slice(index, index);
+      }
+    });
+    this.store.dispatch(removeCartItem({ id }));
+  }
+
+  goToProducts() {
+    this.route.navigateByUrl('/products');
   }
 }

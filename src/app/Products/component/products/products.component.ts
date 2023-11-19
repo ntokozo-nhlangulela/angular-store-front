@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Cart } from 'src/app/Cart/model/cart';
-import { addToCart } from 'src/app/Store/Cart_Store/actions/cart_actions';
+import {
+  addToCart,
+  removeCartItem
+} from 'src/app/Store/Cart_Store/actions/cart_actions';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../product_service/products.service';
 
@@ -19,7 +22,6 @@ export class ProductsComponent implements OnInit {
   public itemNumber = 0;
   public products: any = [];
   currentCartItems: Cart[] = [];
-  //allSkills$: Observable<ISkill[]>;
 
   constructor(
     private productsApi: ProductsService,
@@ -33,8 +35,6 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // const mylist = this.store.dispatch(loadCart(CartItems));
-    //console.log(mylist);
     this.productsApi.getAllProducts().subscribe((res) => {
       this.productsList = res;
 
@@ -50,21 +50,11 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(cartItem: Product) {
-    // const existingItem = this.productsList;
-    // if (cartItem.id == cartItem.id) {
-    //   cartItem.quantity = cartItem.quantity++;
-    // } else {
-    //   this.store.dispatch(addToCart({ cartItem }));
-    // }
-    // const existingItem = this.currentCartItems.find(
-    //   (item) => item.id === cartItem.id
-    // );
-    // if (existingItem) {
-    //   existingItem.quantity = existingItem.quantity + 1;
-    //   this.store.dispatch(updateCartItem({ existingItem }));
-    // } else {
-    //   this.store.dispatch(addToCart({ cartItem }));
-    // }
+  
     this.store.dispatch(addToCart({ cartItem }));
+  }
+
+  removeCartItem(id: number): void {
+    this.store.dispatch(removeCartItem({ id }));
   }
 }

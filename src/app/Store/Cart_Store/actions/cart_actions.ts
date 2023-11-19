@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Product } from 'src/app/Products/model/product';
 
 export const loadCart = createAction(
   '[CartItems] Load cart items',
@@ -19,4 +20,9 @@ export const removeCartItem = createAction(
 export const updateCartItem = createAction(
   '[CartItems] Update Cart Item',
   props<{ existingItem: any }>()
+);
+
+export const emptyCart = createAction(
+  '[CartItems] Empty Cart',
+  props<{ cartItems: Product[] }>()
 );
