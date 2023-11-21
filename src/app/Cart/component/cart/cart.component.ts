@@ -1,7 +1,9 @@
+/* eslint-disable @ngrx/prefer-selector-in-select */
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ProductsComponent } from 'src/app/Products/component/products/products.component';
 import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
@@ -21,14 +23,15 @@ import { CartService } from '../../cart_service/cart.service';
 })
 export class CartComponent implements OnInit, AfterViewInit {
   public products$: Product[] = [];
-  public finalPrice!: number;
+  public finalPrice!: string;
   public itemNumber = 0;
   public id!: number;
+  cartTotal$: Observable<string>;
 
   constructor(
     private productsApi: ProductsService,
     private cartService: CartService,
-    private store: Store<{ carts: { cartItems: Product[] } }>,
+    private store: Store<{ carts: { cartItems: Product[]; total: '' } }>,
     private route: Router
   ) {
     store.select('carts').subscribe((cartState: { cartItems: Product[] }) => {
@@ -43,7 +46,22 @@ export class CartComponent implements OnInit, AfterViewInit {
       this.itemNumber = res.length;
       console.log(this.itemNumber);
     });
-    //this.getTotal();
+
+    // this.cartService.getCartTotal().subscribe((x) => {
+    //   console.log('Cart component click', x);
+    //   this.finalPrice = x;
+    // });
+
+    console.log('Cart component click', this.cartService.getCartTotal());
+
+    // eslint-disable-next-line @ngrx/no-store-subscription
+    this.store.select('carts').subscribe((x) => {
+      console.log('State', x.total);
+      this.finalPrice = x.total;
+    });
+
+    //this.finalPrice = this.cartService.getTotalPrice(item);
+    //  console.log('Checking Total', this.finalPrice);
   }
 
   ngAfterViewInit(): void {

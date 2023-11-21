@@ -16,9 +16,9 @@
 
 <div class="container">
   <div class="card" *ngFor="let item of filteredproductList">
-    <button (click)="gotoDetails(item.id)">
+    <div (click)="gotoDetails(item.id)">
       <img src="{{ item.image }}" alt="Image" class="img" />
-    </button>
+    </div>
     <div class="container">
       <p>{{ item.title }}</p>
     </div>
@@ -27,3 +27,4 @@
     </div>
   </div>
 </div>
+

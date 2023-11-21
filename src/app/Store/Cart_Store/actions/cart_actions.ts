@@ -26,3 +26,8 @@ export const emptyCart = createAction(
   '[CartItems] Empty Cart',
   props<{ cartItems: Product[] }>()
 );
+
+export const cartTotal = createAction(
+  '[CartItems] Total Cart',
+  props<{ total: any }>()
+);
