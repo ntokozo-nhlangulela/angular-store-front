@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
-import { NavBarComponent } from '../../../../nav-bar/nav-bar/nav-bar.component';
+import { NavBarComponent } from '../../../../Nav-bar/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-product-details',

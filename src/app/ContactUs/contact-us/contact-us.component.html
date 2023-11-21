@@ -1,0 +1,44 @@
+<form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+  <label for="name">Name:</label>
+  <input
+    type="text"
+    id="name"
+    formControlName="name"
+    [ngClass]="{
+      'is-valid': contactForm.controls['name'].valid,
+      'is-invalid':
+        contactForm.controls['name'].invalid &&
+        contactForm.controls['name'].touched
+    }" />
+
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    formControlName="email"
+    [ngClass]="{
+      'is-valid': contactForm.controls['email'].valid,
+      'is-invalid': contactForm.controls['email'].invalid
+    }" />
+
+  <label for="phone">Phone:</label>
+  <input
+    type="tel"
+    id="phone"
+    formControlName="phone"
+    [ngClass]="{
+      'is-valid': contactForm.controls['phone'].valid,
+      'is-invalid': contactForm.controls['phone'].invalid
+    }" />
+
+  <label for="description">Description:</label>
+  <textarea
+    id="description"
+    formControlName="description"
+    [ngClass]="{
+      'is-valid': contactForm.controls['description'].valid,
+      'is-invalid': contactForm.controls['description'].invalid
+    }"></textarea>
+
+  <button type="submit">Submit</button>
+</form>

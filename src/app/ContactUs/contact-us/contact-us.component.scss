@@ -1,0 +1,38 @@
+/* contact-us.component.scss */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  /* contact-us.component.css */
+.is-valid {
+  border: 1px solid green;
+}
+
+.is-invalid {
+  border: 1px solid red;
+}
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Add additional styles as needed */

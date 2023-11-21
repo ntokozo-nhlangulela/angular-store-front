@@ -11,7 +11,7 @@ import {
   emptyCart,
   removeCartItem
 } from 'src/app/Store/Cart_Store/actions/cart_actions';
-import { NavBarComponent } from '../../../nav-bar/nav-bar/nav-bar.component';
+import { NavBarComponent } from '../../../Nav-bar/nav-bar/nav-bar.component';
 import { CartService } from '../../cart_service/cart.service';
 
 @Component({
