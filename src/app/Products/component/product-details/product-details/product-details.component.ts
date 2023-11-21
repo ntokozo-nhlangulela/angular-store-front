@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
 import { NavBarComponent } from '../../../../nav-bar/nav-bar/nav-bar.component';
@@ -18,7 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   product = new Product();
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class ProductDetailsComponent implements OnInit {
         console.log('Single Product', this.product);
       });
     });
+    console.log(
+      'details component click',
+      this.cartService.cartTotalSubject.value
+    );
   }
 
   ngOnDestroy() {

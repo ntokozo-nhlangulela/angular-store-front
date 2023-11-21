@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Cart } from 'src/app/Cart/model/cart';
 import {
   addToCart,
+  cartTotal,
   emptyCart,
   loadCart,
   removeCartItem
@@ -9,10 +10,12 @@ import {
 
 export interface CartState {
   cartItems: Cart[];
+  total: string;
 }
 
 export const initialState: CartState = {
   cartItems: [],
+  total: '',
 };
 
 export const cartReducer = createReducer(
@@ -32,6 +35,12 @@ export const cartReducer = createReducer(
     return {
       ...state,
       cartItems: [],
+    };
+  }),
+  on(cartTotal, (state,{ total }) => {
+    return {
+      ...state,
+      total: total,
     };
   })
 );
