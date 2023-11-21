@@ -23,6 +23,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   public finalPrice!: number;
   public itemNumber = 0;
   public id!: number;
+  formattedTotal = '';
 
   constructor(
     private productsApi: ProductsService,
@@ -34,6 +35,7 @@ export class CartComponent implements OnInit, AfterViewInit {
       this.products$ = cartState.cartItems;
       console.log('state: ', this.products$);
     });
+    console.log('state: ', this.products$);
   }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class CartComponent implements OnInit, AfterViewInit {
       console.log(this.itemNumber);
     });
     //this.getTotal();
+    //this.getTotalPrice();
   }
 
   ngAfterViewInit(): void {
@@ -67,5 +70,21 @@ export class CartComponent implements OnInit, AfterViewInit {
 
   goToProducts() {
     this.route.navigateByUrl('/products');
+  }
+
+  // private calculateFinalPrice(): void {
+  //   if (this.products$.length != 0) {
+  //     // Assuming each product has a 'price' property
+  //     this.finalPrice = this.products$.reduce(
+  //       (acc, product) => acc + (product.price || 0)
+  //     );
+  //     console.log('......', this.finalPrice);
+  //   }
+  // }
+
+  getTotalPrice(product: any): string {
+    this.finalPrice = this.finalPrice + product.total;
+    console.log('Total ', this.finalPrice);
+    return (this.formattedTotal = this.finalPrice.toFixed(2));
   }
 }

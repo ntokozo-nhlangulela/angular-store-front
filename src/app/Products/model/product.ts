@@ -6,6 +6,7 @@ export class Product {
   description: string;
   image: string;
   quantity: number;
+  total: number;
   constructor() {
     this.title = '';
     this.id = 0;

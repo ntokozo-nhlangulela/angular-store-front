@@ -20,7 +20,9 @@ import { ProductsService } from '../../product_service/products.service';
 export class ProductsComponent implements OnInit {
   public productsList: Product[] = [];
   public itemNumber = 0;
-  public products: any = [];
+  public products: Product[] = [];
+  finalTotal = 0;
+  formattedTotal = '';
   currentCartItems: Cart[] = [];
 
   constructor(
@@ -50,11 +52,17 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(cartItem: Product) {
-  
     this.store.dispatch(addToCart({ cartItem }));
+    this.getTotalPrice(cartItem);
   }
 
   removeCartItem(id: number): void {
     this.store.dispatch(removeCartItem({ id }));
+  }
+
+  getTotalPrice(product: Product): string {
+    this.finalTotal = this.finalTotal + product.total;
+    console.log('Total ', this.finalTotal);
+    return (this.formattedTotal = this.finalTotal.toFixed(2));
   }
 }
