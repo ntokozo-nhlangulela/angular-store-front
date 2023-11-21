@@ -1,14 +1,29 @@
-<div class="nav">
-  <h1>Store</h1>
+<app-nav-bar></app-nav-bar>
+<div class="col">
+  <select #categoriesList (change)="onSelected()">
+    <option default value="default">Pick a category</option>
+    <option *ngFor="let item of categories">{{ item }}</option>
+  </select>
+
+  <input
+    class="form-control"
+    type="search"
+    (ngModel)="(searchinput)"
+    (keyup)="onSearchChange()"
+    placeholder="Search for Product"
+    aria-label="Search" />
 </div>
+
 <div class="container">
-  <div class="card" *ngFor="let item of productsList">
-    <img src="{{ item.image }}" alt="Image" class="img" />
+  <div class="card" *ngFor="let item of filteredproductList">
+    <button (click)="gotoDetails(item.id)">
+      <img src="{{ item.image }}" alt="Image" class="img" />
+    </button>
     <div class="container">
       <p>{{ item.title }}</p>
     </div>
+    <div>
+      <button class="button" (click)="addToCart(item)">Add to Cart</button>
+    </div>
   </div>
-</div>
-<div class="footer">
-  <p>My Footer</p>
 </div>
