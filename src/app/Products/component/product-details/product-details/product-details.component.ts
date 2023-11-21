@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
+import { NavBarComponent } from '../../../../nav-bar/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
+  imports: [CommonModule, NavBarComponent],
 })
 export class ProductDetailsComponent implements OnInit {
   routeSub: Subscription | undefined;

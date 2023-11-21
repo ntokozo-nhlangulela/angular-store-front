@@ -8,15 +8,16 @@ import {
   addToCart,
   removeCartItem
 } from 'src/app/Store/Cart_Store/actions/cart_actions';
+import { NavBarComponent } from '../../../nav-bar/nav-bar/nav-bar.component';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../product_service/products.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, ProductsComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  imports: [CommonModule, ProductsComponent, NavBarComponent],
 })
 export class ProductsComponent implements OnInit {
   public productsList: Product[] = [];

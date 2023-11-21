@@ -9,14 +9,15 @@ import {
   emptyCart,
   removeCartItem
 } from 'src/app/Store/Cart_Store/actions/cart_actions';
+import { NavBarComponent } from '../../../nav-bar/nav-bar/nav-bar.component';
 import { CartService } from '../../cart_service/cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, CartComponent, ProductsComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
+  imports: [CommonModule, CartComponent, ProductsComponent, NavBarComponent],
 })
 export class CartComponent implements OnInit, AfterViewInit {
   public products$: Product[] = [];

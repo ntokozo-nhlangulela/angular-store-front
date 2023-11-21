@@ -218,7 +218,7 @@ h6 {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 1200px;
+  width: 100vw;
   min-width: none;
   word-wrap: break-word;
   background-color: #fff;
@@ -229,7 +229,7 @@ h6 {
   border-right:  1px solid #E1E8EE;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: .25rem;
-  margin-left: 40px;
+  margin-right: 15px;
 }
 
 .center .btn {

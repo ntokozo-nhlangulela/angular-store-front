@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './Cart/component/cart/cart.component';
+import { NavBarComponent } from './nav-bar/nav-bar/nav-bar.component';
 import { ProductsComponent } from './Products/component/products/products.component';
 import { CartEffects } from './Store/Cart_Store/effects/cart_effects';
 import { cartReducer } from './Store/Cart_Store/reducers/cart_reducer';
@@ -18,6 +19,7 @@ import { cartReducer } from './Store/Cart_Store/reducers/cart_reducer';
   imports: [
     CartComponent,
     ProductsComponent,
+    NavBarComponent,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
