@@ -1,11 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Cart } from 'src/app/Cart/model/cart';
 import { removeCartItem } from 'src/app/Store/Cart_Store/actions/cart_actions';
-import { NavBarComponent } from '../../../nav-bar/nav-bar/nav-bar.component';
+import { NavBarComponent } from '../../../Nav-bar/nav-bar/nav-bar.component';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../product_service/products.service';
 
