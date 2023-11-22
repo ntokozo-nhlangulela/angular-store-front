@@ -1,4 +1,4 @@
-Angular Store Front 
+**Angular Store Front **
 
 Project Description
 
