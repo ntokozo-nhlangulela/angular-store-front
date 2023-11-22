@@ -54,13 +54,10 @@ export class ContactUsComponent implements OnInit {
 
   submitForm() {
     if (this.contactForm.valid) {
-      // Handle form submission
       console.log('Form submitted:', this.contactForm.value);
       alert('Success');
     } else {
-      // Highlight fields with errors
       this.markFormGroupTouched(this.contactForm);
-      console.log('Error');
       alert('Error');
     }
   }
