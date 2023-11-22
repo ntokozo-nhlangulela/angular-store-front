@@ -1,9 +1,13 @@
+/* eslint-disable @ngrx/prefer-selector-in-select */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from 'src/app/Products/model/product';
-
+import {
+  addToCart,
+  cartTotal
+} from 'src/app/Store/Cart_Store/actions/cart_actions';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +17,8 @@ export class CartService {
   myBehaviorSubject = new BehaviorSubject<number>(0);
   finalTotal = 0;
   formattedTotal = '';
+  cartTotalSubject = new BehaviorSubject<string>('');
+
   constructor(
     private http: HttpClient,
     private store: Store
@@ -27,14 +33,32 @@ export class CartService {
     this.productList.next(product);
   }
 
+  addToCart(cartItem: Product) {
+    this.cartItemList.push(cartItem);
+    this.productList.next(this.cartItemList);
+    this.getTotalPrice(cartItem);
+    this.store.dispatch(addToCart({ cartItem }));
+  }
+
   getTotalPrice(product: Product): string {
     this.finalTotal = this.finalTotal + product.price;
-    console.log('Total ', this.finalTotal);
+    this.formattedTotal = this.finalTotal.toFixed(2);
+    this.cartTotalSubject.next(this.formattedTotal);
+
+    this.cartTotalSubject.getValue();
+    const total = this.formattedTotal;
+    this.store.dispatch(cartTotal({ total }));
+    this.store.complete();
+
     return (this.formattedTotal = this.finalTotal.toFixed(2));
   }
 
+  getCartTotal(): string {
+    return this.cartTotalSubject.value;
+  }
+
   removeCartItem(id: number) {
-    this.cartItemList.map((a: any, index: any) => {
+    this.cartItemList.map((a: Product, index: any) => {
       if (id === a.id) {
         this.cartItemList.splice(index, 1);
       }
