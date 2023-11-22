@@ -38,18 +38,14 @@ export class CartService {
     this.productList.next(this.cartItemList);
     this.getTotalPrice(cartItem);
     this.store.dispatch(addToCart({ cartItem }));
-
-    console.log(this.cartItemList);
   }
 
   getTotalPrice(product: Product): string {
     this.finalTotal = this.finalTotal + product.price;
-    console.log('Total ', this.finalTotal);
     this.formattedTotal = this.finalTotal.toFixed(2);
-    console.log('Formated ', this.formattedTotal);
-    this.cartTotalSubject.next('Ntokozo');
+    this.cartTotalSubject.next(this.formattedTotal);
 
-    console.log('sho sho', this.cartTotalSubject.getValue());
+    this.cartTotalSubject.getValue();
     const total = this.formattedTotal;
     this.store.dispatch(cartTotal({ total }));
     this.store.complete();
@@ -62,7 +58,7 @@ export class CartService {
   }
 
   removeCartItem(id: number) {
-    this.cartItemList.map((a: any, index: any) => {
+    this.cartItemList.map((a: Product, index: any) => {
       if (id === a.id) {
         this.cartItemList.splice(index, 1);
       }

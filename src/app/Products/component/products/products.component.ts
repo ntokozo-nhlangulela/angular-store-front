@@ -26,7 +26,7 @@ import { ProductsService } from '../../product_service/products.service';
 export class ProductsComponent implements OnInit {
   public productsList: Product[] = [];
   public itemNumber = 0;
-  public products: any = [];
+  public products: Product[] = [];
   currentCartItems: Cart[] = [];
   @Input() item!: Product;
   categories: string[] = [];
@@ -42,11 +42,10 @@ export class ProductsComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private store: Store<{ carts: { cartItems: any[] } }>
+    private store: Store<{ carts: { cartItems: Product[] } }>
   ) {
-    store.select('carts').subscribe((cartState: { cartItems: any[] }) => {
+    store.select('carts').subscribe((cartState: { cartItems: Product[] }) => {
       this.products = cartState.cartItems;
-      console.log('state: ', this.products);
     });
   }
 
@@ -60,24 +59,20 @@ export class ProductsComponent implements OnInit {
 
       this.cartService.getProducts().subscribe((res) => {
         this.itemNumber = res.length;
-        console.log(this.itemNumber);
       });
     });
 
     this.productsApi.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
-    console.log(this.categories);
     this.productsApi.getAllProducts().subscribe((products) => {
       this.productsList = products;
       this.filteredproductList = this.productsList;
-      console.log(this.productsList);
     });
   }
 
   addToCart(item: Product) {
     this.cartService.addToCart(item);
-    console.log('addtocart log', this.cartService.getCartTotal());
   }
 
   removeCartItem(id: number): void {

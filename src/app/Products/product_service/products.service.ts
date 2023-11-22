@@ -20,7 +20,6 @@ export class ProductsService {
   getSingleProduct(id: number) {
     return this.http.get<any>(`https://fakestoreapi.com/products/${id}`).pipe(
       map((res: Product) => {
-        console.log(res);
         return res;
       })
     );

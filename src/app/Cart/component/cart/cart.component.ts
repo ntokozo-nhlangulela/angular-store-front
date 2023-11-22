@@ -41,27 +41,14 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log('Hwye');
     this.cartService.getProducts().subscribe((res) => {
       this.itemNumber = res.length;
-      console.log(this.itemNumber);
     });
-
-    // this.cartService.getCartTotal().subscribe((x) => {
-    //   console.log('Cart component click', x);
-    //   this.finalPrice = x;
-    // });
-
     console.log('Cart component click', this.cartService.getCartTotal());
-
-    // eslint-disable-next-line @ngrx/no-store-subscription
     this.store.select('carts').subscribe((x) => {
       console.log('State', x.total);
       this.finalPrice = x.total;
     });
-
-    //this.finalPrice = this.cartService.getTotalPrice(item);
-    //  console.log('Checking Total', this.finalPrice);
   }
 
   ngAfterViewInit(): void {
@@ -75,7 +62,6 @@ export class CartComponent implements OnInit, AfterViewInit {
 
   removeCartItem(id: number): void {
     const x = this.products$.find((x) => x.id === id);
-    console.log('Checking X ', x);
     this.products$.forEach((element, index) => {
       if (element.id === x?.id) {
         this.products$.slice(index, index);

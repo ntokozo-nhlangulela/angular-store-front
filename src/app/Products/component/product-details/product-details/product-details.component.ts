@@ -25,18 +25,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
-      console.log(params); //log the entire params object
-      console.log(params['id']); //log the value of id
       const productId = params['id'];
       this.productService.getSingleProduct(productId).subscribe((res: any) => {
         this.product = res;
-        console.log('Single Product', this.product);
       });
     });
-    console.log(
-      'details component click',
-      this.cartService.cartTotalSubject.value
-    );
   }
 
   ngOnDestroy() {
