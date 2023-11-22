@@ -1,27 +1,33 @@
-# AngularStoreFront
+Angular Store Front 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Project Description
 
-## Development server
+Building a basic storefront using the fakestoreapi to get all products and display them as cards on a page, with the ability to add items to a cart and also delete them from the card. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Outcome of project
 
-## Code scaffolding
+1. Practiced building components and services 
+2. Practiced consuming REST APIs 
+3. Practiced formatting field values 
+4. Practiced input validation 
+5. Implemented unit tests using Karma & Jasmine 
+6. Practiced Programming using Rxjs and Observables
+7. Used state management using Ngrx
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Screenshots of working application
 
-## Build
+Products Page
+<img width="1715" alt="Screenshot 2023-11-22 at 14 02 24" src="https://github.com/ntokozo-nhlangulela/angular-store-front/assets/125869858/9fe50c14-bbc4-4060-ad06-bce6a19e8fe7">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Product Details Page
+<img width="1720" alt="Screenshot 2023-11-22 at 14 02 39" src="https://github.com/ntokozo-nhlangulela/angular-store-front/assets/125869858/3e993a82-2a7d-4e6c-b4f4-e5908c6b3687">
 
-## Running unit tests
+Empty Cart Page
+<img width="1709" alt="Screenshot 2023-11-22 at 14 02 47" src="https://github.com/ntokozo-nhlangulela/angular-store-front/assets/125869858/8fbb7575-c6c6-40a5-91c9-1e460233f8d8">
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Cart Page
+<img width="1718" alt="Screenshot 2023-11-22 at 14 04 05" src="https://github.com/ntokozo-nhlangulela/angular-store-front/assets/125869858/be52a48f-04cd-492a-833b-29c7c7e93960">
 
-## Running end-to-end tests
+Contact Us Page
+<img width="1714" alt="Screenshot 2023-11-22 at 14 02 43" src="https://github.com/ntokozo-nhlangulela/angular-store-front/assets/125869858/39b44841-313d-4e27-b802-5128d9b5f85e">
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
