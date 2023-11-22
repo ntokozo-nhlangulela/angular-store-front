@@ -11,7 +11,6 @@ import {
   emptyCart,
   removeCartItem
 } from 'src/app/Store/Cart_Store/actions/cart_actions';
-import { NavBarComponent } from '../../../Nav-bar/nav-bar/nav-bar.component';
 import { CartService } from '../../cart_service/cart.service';
 
 @Component({
@@ -19,7 +18,7 @@ import { CartService } from '../../cart_service/cart.service';
   standalone: true,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  imports: [CommonModule, CartComponent, ProductsComponent, NavBarComponent],
+  imports: [CommonModule, CartComponent, ProductsComponent],
 })
 export class CartComponent implements OnInit, AfterViewInit {
   public products$: Product[] = [];
