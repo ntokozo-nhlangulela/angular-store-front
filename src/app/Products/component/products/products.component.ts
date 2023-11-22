@@ -7,12 +7,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Cart } from 'src/app/Cart/model/cart';
 import { removeCartItem } from 'src/app/Store/Cart_Store/actions/cart_actions';
-import { NavBarComponent } from '../../../Nav-bar/nav-bar/nav-bar.component';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../product_service/products.service';
 
@@ -21,7 +21,7 @@ import { ProductsService } from '../../product_service/products.service';
   standalone: true,
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  imports: [CommonModule, ProductsComponent, NavBarComponent],
+  imports: [CommonModule, ProductsComponent, FormsModule],
 })
 export class ProductsComponent implements OnInit {
   public productsList: Product[] = [];

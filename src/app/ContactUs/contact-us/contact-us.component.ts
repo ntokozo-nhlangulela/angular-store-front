@@ -9,7 +9,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { textonlyValidation } from 'src/app/Shared/validation/text-only.validation';
-import { NavBarComponent } from '../../Nav-bar/nav-bar/nav-bar.component';
 import { ContactUs } from '../model/contact-us';
 
 @Component({
@@ -17,7 +16,7 @@ import { ContactUs } from '../model/contact-us';
   standalone: true,
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.scss'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NavBarComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class ContactUsComponent implements OnInit {
   contactForm!: FormGroup;
