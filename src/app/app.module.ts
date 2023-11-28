@@ -9,8 +9,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CartComponent } from './Cart/component/cart/cart.component';
 import { NavBarComponent } from './Nav-bar/nav-bar/nav-bar.component';
 import { ProductsComponent } from './Products/component/products/products.component';
-import { CartEffects } from './Store/Cart_Store/effects/cart_effects';
-import { cartReducer } from './Store/Cart_Store/reducers/cart_reducer';
+import { CartEffects } from './Store/effects/effects';
+import { reducer } from './Store/reducers/reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -25,7 +25,7 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ carts: cartReducer }),
+    StoreModule.forRoot({ appState: reducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),

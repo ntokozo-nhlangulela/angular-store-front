@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CartService } from 'src/app/Cart/cart_service/cart.service';
 import { Product } from 'src/app/Products/model/product';
 import { ProductsService } from 'src/app/Products/product_service/products.service';
 
@@ -18,8 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   product = new Product();
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService,
-    private cartService: CartService
+    private productService: ProductsService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product = res;
       });
     });
+    //TODO "Replace with Resolver"
   }
 
   ngOnDestroy() {

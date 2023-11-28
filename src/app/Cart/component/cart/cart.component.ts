@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/Products/product_service/products.servi
 import {
   emptyCart,
   removeCartItem
-} from 'src/app/Store/Cart_Store/actions/cart_actions';
+} from 'src/app/Store/actions/actions';
 import { CartService } from '../../cart_service/cart.service';
 
 @Component({
